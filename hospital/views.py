@@ -197,14 +197,14 @@ def Add_Patient(request):
          return redirect('login')
     if request.method == 'POST':
         n = request.POST['name']
-        m = request.POST['mobile']
+        c = request.POST['mobile']
         g = request.POST['gender']
         a = request.POST['address']
         
         
         # Check if the user exists and is authenticated
         try:
-            Patient.objects.create(name=n, mobile=m, gender=g, address=a)
+            Patient.objects.create(name=n, mobile=c, gender=g, address=a)
             error = "no"  # No error, login successful
         except:
             error = "yes"
