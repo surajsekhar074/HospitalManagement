@@ -1,0 +1,46 @@
+{% extends 'nvgbar.html' %}
+{% load static %}
+{% block body %}
+<div class="container" style="margin-top:50px">
+    <h2 class="text-center">Edit Doctor</h2>
+    <br><br>
+    
+    <form method="post">
+        <input type="hidden" name="id" id="id" required maxlength="20" value="{{doctor.id}}"/>
+        {% csrf_token %}
+    
+        <label>Doctor Name</label>
+        <input type="text" class="form-control" name="name" value="{{doctor.name}}">
+        <label>Contact</label>
+        <input type="text" class="form-control" name="contact"  value="{{doctor.contact}}">
+        <label>Specialization</label>
+        <input type="text" class="form-control" name="specialization"  value="{{doctor.specialization}}">
+        <br><br>
+        <input type="submit" value="Submit" class="form-control btn btn-primary">
+    
+    
+    
+    
+    
+    </form>
+    
+    
+</div>
+
+{% if error == "no" %}
+    <script>
+        alert('Record saved Successfull');
+        window.location=("{% url 'view_doctor' %}");
+    </script>
+    {% endif %}
+    
+    {% if error == "yes" %}
+     <script>
+         alert('Something went wrong, try again');
+
+     </script>
+      {% endif %}
+
+
+
+{% endblock %}
