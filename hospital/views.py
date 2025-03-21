@@ -212,6 +212,7 @@ def Add_Patient(request):
     # Return the response with the error message
     d = {'error': error}
     return render(request, 'add_patient.html', d)
+    
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
