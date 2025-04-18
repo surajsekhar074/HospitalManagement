@@ -1,0 +1,303 @@
+{% extends 'nvgbar.html' %}
+{% load static %}
+{% block body %}
+
+
+<!-- Import Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fc;
+    }
+
+    .dashboard-container {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    /* Modern Dashboard Title */
+    .dashboard-title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 42px;
+        font-weight: 700;
+        background: linear-gradient(45deg, #ff416c, #ff4b2b, #007bff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+        display: inline-block;
+        position: relative;
+        letter-spacing: 2px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* 3D & Neon Glow Effect */
+    .dashboard-title:hover {
+        text-shadow: 0px 0px 10px rgba(255, 75, 43, 0.8), 0px 0px 20px rgba(0, 123, 255, 0.6);
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Typing Effect */
+    .typing {
+        display: inline-block;
+        border-right: 3px solid #ff416c;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 3s steps(15, end), blink 0.8s infinite;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent;
+        }
+    }
+</style>
+<div class="container dashboard-container">
+    <h2 class="dashboard-title fade-in">
+        <span id="typing-text"></span>
+    </h2>
+</div>
+
+<!-- Import Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Custom CSS for Styling -->
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fc;
+    }
+
+    .dashboard-container {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    /* Date & Time Styling */
+    .date-time-container {
+        background: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Card Design */
+    .dashboard-card {
+        background: linear-gradient(135deg, #ffffff, #f3f3f3);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Icons */
+    .icon {
+        font-size: 50px;
+        margin-bottom: 15px;
+        color: #007bff;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .dashboard-card:hover .icon {
+        transform: rotate(10deg);
+    }
+
+    /* Numbers */
+    .dashboard-number {
+        font-size: 40px;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    /* Links */
+    .dashboard-link {
+        text-decoration: none;
+        color: red;
+        font-size: 20px;
+        transition: color 0.3s ease-in-out;
+        font-weight: 600;
+    }
+
+    .dashboard-link:hover {
+        color: darkred;
+    }
+
+    /* Animation */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .like-btn {
+  display: inline-block;
+  background-color: #4CAF50;  /* Green background */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;  /* Removes underline */
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.like-btn:hover {
+  background-color: #45a049;  /* Darker green on hover */
+}
+</style>
+
+<div class="container dashboard-container">
+    
+    
+    
+    <!-- JavaScript for Typing Effect -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let text = "Admin Dashboard";
+        let index = 0;
+        let speed = 100;
+        
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("typing-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, speed);
+            }
+        }
+        
+        typeEffect();
+    });
+</script>
+
+    <!-- Live Date & Time -->
+    <div class="date-time-container fade-in">
+        <span id="current-date"></span> | <span id="current-time"></span>
+    </div>
+
+    <div class="row">
+        <!-- Doctors Card -->
+        <div class="col-md-3 col-sm-6 mb-4 fade-in">
+            <div class="dashboard-card">
+                <i class="icon fas fa-user-md"></i>
+                <h2 class="dashboard-number" id="doctor-count">{{ doctor_count }}</h2>
+                <a href="{% url 'view_doctor' %}" class="like-btn">Doctors</a>
+            </div>
+        </div>
+
+        <!-- Patients Card -->
+        <div class="col-md-3 col-sm-6 mb-4 fade-in">
+            <div class="dashboard-card">
+                <i class="icon fas fa-users"></i>
+                <h2 class="dashboard-number" id="patient-count">{{ patient_count }}</h2>
+                <a href="{% url 'view_patient' %}" class="like-btn">Patients</a>
+            </div>
+        </div>
+
+        <!-- Total Appointments Card -->
+        <div class="col-md-3 col-sm-6 mb-4 fade-in">
+            <div class="dashboard-card">
+                <i class="icon fas fa-calendar-alt"></i>
+                <h2 class="dashboard-number" id="appointment-count">{{ appointment_count }}</h2>
+                <a href="{% url 'view_appointment' %}" class="like-btn">Appointments</a>
+            </div>
+        </div>
+
+        <!-- Today's Appointments Card -->
+        <div class="col-md-3 col-sm-6 mb-4 fade-in">
+            <div class="dashboard-card">
+                <i class="icon fas fa-calendar-day"></i>
+                <h2 class="dashboard-number" id="today-appointment-count">{{ today_appointment_count }}</h2>
+                <a href="{% url 'today_appointments' %}" class="like-btn">Today's Appointments</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Font Awesome for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<!-- JavaScript for Date, Time & Animated Counters -->
+<script>
+    // Function to update the date and time dynamically
+    function updateDateTime() {
+        let now = new Date();
+        let date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        let time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+        document.getElementById("current-date").innerText = date;
+        document.getElementById("current-time").innerText = time;
+    }
+
+    // Update time every second
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); // Call once to prevent delay
+
+    // Animated Counter Function
+    document.addEventListener("DOMContentLoaded", function () {
+        function animateCounter(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            let range = end - start;
+            let current = start;
+            let increment = range / (duration / 20);
+            let step = function () {
+                current += increment;
+                obj.innerText = Math.round(current);
+                if (current < end) {
+                    requestAnimationFrame(step);
+                } else {
+                    obj.innerText = end;
+                }
+            };
+            step();
+        }
+
+        animateCounter("doctor-count", 0, {{ doctor_count }}, 1000);
+        animateCounter("patient-count", 0, {{ patient_count }}, 1000);
+        animateCounter("appointment-count", 0, {{ appointment_count }}, 1000);
+        animateCounter("today-appointment-count", 0, {{ today_appointment_count }}, 1000);
+    });
+</script>
+
+{% endblock %}
